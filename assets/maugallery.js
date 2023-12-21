@@ -157,6 +157,17 @@
 		  imagesCollection[index] ||
 		  imagesCollection[imagesCollection.length - 1];
 		$(".lightboxImage").attr("src", $(next).attr("src"));
+
+		let images = $(".gallery-item");
+		let currentIndex = images.index($(`#${lightboxId} .lightboxImage`).attr("src"));
+		let prevIndex = currentIndex - 1;
+		if (prevIndex < 0) {
+		  prevIndex = images.length - 1;
+		}
+		let prevImageSrc = $(images[prevIndex]).attr("src");
+		$(`#${lightboxId} .lightboxImage`).attr("src", prevImageSrc);
+
+
 	  },
 	  nextImage() {
 		let activeImage = null;
